@@ -13,7 +13,7 @@ A Content Delivery Network (CDN) is a geographically distributed group of server
 
 To use React in your project using CDN, you can add script tags to load the latest versions of React and ReactDOM from unpkg, which is a CDN service that hosts npm packages.
 
-## Things in a react app
+## React Essentials
 ### NPM's full form is censored
 
 npm is not a node package manager! It does not have a fullform, yes it helps manage packages, but does not stand for node package manager. npm is the world's largest Software Registry. All the libraries and utilities that we need in a react/react project comes from npm.
@@ -84,4 +84,53 @@ Parcel is a web application bundler that can be used to build single or multi-pa
 - npx parcel build index.html: builds a dev build
     - remember to remove main from package.json
 
-## Laying the foundation
+## React Foundations
+
+### React Elements
+React elements are the smallest building blocks of React applications. They are plain JavaScript objects that describe what we want to appear on the screen. Unlike browser DOM elements, React elements are cheap to create and are not actual instances.
+
+An element can be created using JSX or React without JSX. An element contains type and properties, where the type specifies the component type (for example, a Button) and its properties (for example, its color). An element can be as simple as a single tag or can contain other elements inside it.
+
+*React elements are not html elements! When they are rendered to DOM they become html elements.*
+
+### JSX
+JSX stands for JavaScript XML.
+- It is a syntax extension of JavaScript that allows us to write HTML-like code in our JavaScript code.
+- JSX makes it easier to write and add HTML in React.
+- It allows us to write HTML elements in JavaScript and place them in the DOM without any createElement() and/or appendChild() methods.
+- JSX converts HTML tags into React elements.
+
+*JSX helps create react elements much easily* 
+- *JSX is not a part of React* (makes react user friendly)
+- *JSX is not Html inside Javascript* (but is a syntax extension of js)
+- *JSX does not create Html elements* (but it creates react elements i.e. js Objects)
+
+*JS Engine does not understand JSX code. It's a syntax extension. JSX is not JS!*
+*Parcel uses Babel to parse the JSX code, it's transpiled by Babel before it reaches the js engine*
+
+### Babel
+Babel is a transpiler that allows developers to use future JavaScript in today’s browsers.  It can convert the latest version of JavaScript code into the one that the browser understands. Babel is a widely used tool that can transpile js code into the code that today’s browser understands. If you are using React, you can use Babel with React to transpile the JSX code into simple React functions that can be understood by browsers.
+
+What are transpilers? <br>
+Transpilers are also known as source-to-source compilers. So in essence they are a subset of compilers which take in a source code file and convert it to another source code file in some other language or a different version of the same language.
+
+### React Component
+A React component is a reusable piece of code that describes a part of a user interface. It can be a button, a form, a header, or any other element that we want to display on the screen. Components are the building blocks of React applications, and they can be used to create complex user interfaces.
+
+React components can be of two types: class based components (old method) and function based components (new method ).
+Class components are defined using ES6 classes and have a state and lifecycle methods. Function components are defined using JavaScript functions and do not have a state or lifecycle methods. Function components are simpler and easier to write than class components.
+
+Functional components must return a JSX element. 
+
+*We can use this component in another component or in the ReactDOM.render() method to render it on the screen*
+*FC's are js function that returns a react element.*
+*Component Composition refers to nesting components inside one another.*
+
+React provides several measures to prevent cross-site scripting (XSS) attacks. By default, React escapes any values embedded in JSX before rendering them. This ensures that you can never inject anything that’s not explicitly written in your application. Everything is converted to a string before being rendered 2. This helps prevent XSS attacks. Beside that, we also have dangerouslySetInnerHTML and Content Security Policy (CSP) to help with scripting attacks.
+
+### Note: 
+
+- package.json has the scripts object that shows the command used to run the project
+- to give a class to html elements in html use className, use CamelCase instead of kebab case
+- multiline JSX code has to be wrapped inside round brackets!
+- name react functional components starting with a capital letter!

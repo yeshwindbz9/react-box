@@ -56,7 +56,7 @@ npx is a tool for executing Node packages. <br>
 npx is a command-line interface tool that comes with npm. It allows you to run an arbitrary command from an npm package, in a similar context as running it via npm run. You can specify multiple packages to be provided in the PATH of the executed command, and use different options and flags to customize the behavior
 
 ### Parcel
-Parcel is a web application bundler that can be used to build single or multi-page React applications 1. It provides a first-class development experience with Fast Refresh and supports JSX, TypeScript, Flow, and many styling methodologies out of the box. [helps us build a production ready webpage]
+Parcel is a web application bundler that can be used to build single or multi-page React applications. It provides a first-class development experience with Fast Refresh and supports JSX, TypeScript, Flow, and many styling methodologies out of the box. [helps us build a production ready webpage]
 - Dev Build
 - Bundles all code - also can have different prod and development build
 - Differential bundling - bundled for different platform (support old browsers)
@@ -83,3 +83,5 @@ Parcel is a web application bundler that can be used to build single or multi-pa
 - React is not the only module that makes your webpage fast, it's also modules like Parcel. React and Parcel go hand in hand.
 - npx parcel build index.html: builds a dev build
     - remember to remove main from package.json
+
+## Laying the foundation

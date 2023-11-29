@@ -1,0 +1,37 @@
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	background-color: #f2f2f2;
+    gap: 10px;
+    border-radius: 9px;
+}
+
+form{
+    padding: 10px;
+}
+
+.search-bar {
+	flex-grow: 1;
+	margin: 0 20px;
+}
+
+.search-bar input[type="text"] {
+	width: 90%;
+	padding: 10px;
+	border: none;
+	border-radius: 9px;
+	font-size: 16px;
+	background-color: #e6e6e6;
+    margin: 10px;
+}
+
+.search-bar button[type="submit"] {
+	background-color: grey;
+	color: white;
+	border: none;
+	border-radius: 9px;
+	padding: 10px;
+	cursor: pointer;
+}

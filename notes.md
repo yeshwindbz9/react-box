@@ -134,3 +134,45 @@ React provides several measures to prevent cross-site scripting (XSS) attacks. B
 - to give a class to html elements in html use className, use CamelCase instead of kebab case
 - multiline JSX code has to be wrapped inside round brackets!
 - name react functional components starting with a capital letter!
+
+
+## Start Codin with Foodin
+
+*before starting any frontend project, the first step is to prototype and designa wireframe.*
+
+### Dynamically passing data between props
+
+When it comes to passing data between components in React, there are several ways to achieve this. One of the most common ways is to use props.
+
+To pass data between a parent component and a child component, you can create two components, one parent and one child. Then, you can import the child component in the parent component and return it. You can create a function and a button to trigger that function. Also, you can create a state using the useState Hook to manage the data. When the button is clicked, it will store the data in the state variable. Finally, you can pass the data as props when you are calling the child component.
+
+In the child component, you can capture the data by using either functional or class components. If you are using a functional component, you can simply catch the data in the parameters. If you have a class component, you can use this.props to access the data.
+
+*passing props to an argument is like passing arguments to a function.*
+
+### Config driven UI
+A config-driven UI is a technique that allows developers to create dynamic and customizable user interfaces without hard-coding them. It uses a configuration file to define the layout and content of the UI components.
+
+This approach is useful when developers need to render two types of UI: config-driven forms/UI and data-driven forms/UI.
+
+In a typical scenario, interaction between the client and the server is done using forms, starting with login to payment forms. Most of these forms also get frequent updates as the requirements increase in terms of form validations, dropdown options, or design changes. As a result, the code gets polluted after every update, and sometimes it’s very hard to read the whole code. To avoid this situation, developers can create a schema of the form using a config object based on their requirements. They can then use this schema to render the form.
+
+The concept is to create a renderer function that accepts this config and renders different components accordingly. The renderer function can render different types of HTML elements based on the requirements, such as input, dropdown, checkbox, radio buttons, and even an image.
+
+*when using loop to render components it's a must to create a uninque key, this is to uniquely identify them on the Dom tree. using list index as keys are a bad practise.*
+
+
+### React.Fragment element
+React.Fragment is a special syntax that lets you group a list of HTML elements without adding extra nodes to the DOM. It is useful for returning multiple child components from a single parent component without introducing any unnecessary markup in the rendered HTML. You can use <React.Fragment> or the shorthand syntax <> to create a fragment 
+
+### Virtual DOM and Reconcilation
+The Virtual DOM is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM.
+
+It is used in declarative web frameworks such as React, Vue.js, and Elm. Updating the virtual DOM is comparatively faster than updating the actual DOM (via JavaScript).
+
+Reconciliation in React refers to the process of updating the user interface efficiently when the underlying data or state changes.  It is an important concept because it allows React to minimize the number of updates to the actual DOM, improving performance and ensuring a responsive user interface.
+
+When a component’s state changes, React has to verify whether it needs to update the DOM or not. It does this by creating a Virtual DOM and comparing it with the current DOM. The virtual DOM is a lightweight copy of the actual DOM that React keeps in memory. It is faster to update the virtual DOM than the actual DOM.  React uses a diffing algorithm to compare the virtual DOM with the current DOM and update only the parts that have changed. This process is called reconciliation.
+
+### React Fiber
+React Fiber is an ongoing reimplementation of React’s core algorithm that was introduced in React 16.  It is a complete rewrite of the React core and is aimed at improving the perceived performance for complex React applications.  The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures.

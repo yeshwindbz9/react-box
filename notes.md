@@ -138,7 +138,7 @@ React provides several measures to prevent cross-site scripting (XSS) attacks. B
 
 ## Start Codin with Foodin
 
-*before starting any frontend project, the first step is to prototype and designa wireframe.*
+*before starting any frontend project, the first step is to prototype and design a wireframe/mockup.*
 
 ### Dynamically passing data between props
 

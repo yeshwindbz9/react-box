@@ -12,19 +12,19 @@ const AppComponent = () => {
 }
 
 const HeaderComponent= () => (
-  <div className="header">
-		<div className="logo-container">
-    <img className="logo" width="80" height="80" src="https://img.icons8.com/3d-fluency/94/fry.png" alt="fry"/>
-    </div>
-    <h1>Foodin: A food ordering app clone </h1>
-		<div className="nav-items">
-      <ul>
-        <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/94/log-cabin.png" alt="log-cabin"/></li>
-        <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/188/info.png" alt="info"/></li>
-        <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/94/address-book.png" alt="address-book"/></li>
-        <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/94/shopping-cart.png" alt="shopping-cart"/></li>
-      </ul>
-      </div>
+    <div className="header">
+        <div className="logo-container">
+            <img className="logo" width="80" height="80" src="https://img.icons8.com/3d-fluency/94/fry.png" alt="fry"/>
+        </div>
+        <h1>Foodin: A food ordering app clone </h1>
+        <div className="nav-items">
+        <ul>
+            <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/94/log-cabin.png" alt="log-cabin"/></li>
+            <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/188/info.png" alt="info"/></li>
+            <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/94/address-book.png" alt="address-book"/></li>
+            <li><img width="40" height="40" src="https://img.icons8.com/3d-fluency/94/shopping-cart.png" alt="shopping-cart"/></li>
+        </ul>
+        </div>
 	</div>
 );
 
@@ -1754,15 +1754,15 @@ const BodyComponent= () => {
           {
             resData.map(restaurant=><ResCard key={restaurant.info.id} {...restaurant}/>)
           }
-          </div>
+        </div>
     </div>
   );
 }
 
 const FooterComponent= () => (
-  <div className="footer">
-		<h5>Yeshwin X Namaste React</h5>
-	</div>
+    <div className="footer">
+	    <h5>Yeshwin X Namaste React</h5>
+    </div>
 );
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));

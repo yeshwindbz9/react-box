@@ -1,0 +1,89 @@
+.app {
+    display: flex; /* displays flex-items (children) inline */
+    flex-direction: column; /* stacks them vertically */
+    height: 100vh; /* needs to take the parents height, alternative: body {display: flex} */
+    gap: 5px;
+    font-family: 'Tsukimi Rounded', sans-serif;
+  }
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 9px;
+    flex-shrink: 0;
+}
+
+.logo{
+    padding: 5px;
+    margin: 5px;
+}
+
+.nav-items > ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-items > ul > li{
+    padding: 10px;
+    margin: 10px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.footer{
+    display: flex;
+    justify-content:center;
+    background-color: whitesmoke;
+    border-radius: 9px;
+    flex-shrink: 0;
+    height: 60px;
+}
+
+.main-body{
+    flex: 1;
+    background-color: whitesmoke;
+    border-radius: 9px;
+}
+
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.res-card{
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    border-radius: 9px;
+}
+
+.res-card:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    box-shadow: 10px 10px;
+}
+
+.res-logo{
+    width: 200px;
+    height: 180px;
+    border-radius: 9px;
+}
+
+.filter{
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.filter-btn, .search-box{
+    padding: 4px;
+    border-radius: 9px;
+    font-family: 'Tsukimi Rounded', sans-serif;
+}
+.filter-btn:hover, .search-box:focus{
+    box-shadow: 5px 5px;
+}

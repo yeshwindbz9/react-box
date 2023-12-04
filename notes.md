@@ -214,7 +214,7 @@ Default exports are used to export only one value from a module. We can use the 
 - You can use both default and named imports together in JavaScript. For example, import defaultExport, { namedExport1, namedExport2 } from './module.js';
 - import all the named exports of a module using the _ character. For example, import _ as myModule from './module.js';
 
-### Hooks and State variable
+### Hooks and State variable in React
 
 In React, a state variable is an object that stores the property values of a component. The state object is where you store property values that belong to the component. When the state object changes, the component re-renders.
 
@@ -228,8 +228,96 @@ In React, a hooks are normal utility js functions that lets you use state and ot
 - useRef: Lets you create a mutable reference that persists across renders
 - useReducer: Lets you manage complex state logic in your functional components
 
-### Config.js
+### Config.js file in a project
 
 config.js is a file that can be used to store static data that needs to be used all over the React application. It can be used to store data such as API URLs, environment variables, and other configuration data.
 
 The config.js file can be used to define a global JavaScript object that can be accessed from any file in the application. This can be useful when you have multiple files that use the same configuration data.
+
+## Connecting React Applications with Microservices
+
+### Development Architecture: Monolith & Microservice Architecture
+
+In web development, _monolithic architecture_ is a traditional software design pattern where a single application is built as a unified unit that is self-contained and independent from other applications. The term “monolith” refers to something large and glacial, which is an apt description of this type of architecture.
+
+In a _monolithic architecture_, the entire application is built as a single unit with one codebase that couples all of the business concerns together. This makes it easier to manage code early on in a project’s life, but as the application grows, it can become difficult to maintain and scale. To make a change to this sort of application requires updating the entire stack by accessing the code base and building and deploying an updated version of the service-side interface. This makes updates restrictive and time-consuming.
+
+In contrast, a _microservices architecture_ is a collection of smaller, independently deployable services that are built around business capabilities. Each service is self-contained and can be developed, deployed, and scaled independently. This makes it easier to manage and scale the application as it grows.
+
+_Microservices communicate_ with other services through simple interfaces to solve business problems. This architecture style provides the framework to develop, deploy, and maintain microservices architecture diagrams and services independently
+
+_Microservices architecture_ is often compared to service-oriented architecture (SOA), as both have the same objective, which is to break up monolithic applications into smaller components. However, they have different approaches.
+
+- It follows single responsibility principle, where each service has it's own job.
+- Micro service architecture allows each service/component to use it's own tech stack/programming language/libraries and tools.
+- These Microservices runs on a unique port number. The different ports can be mapped to a domain name.
+
+### When fetching data from an API
+
+React allows us to do the following, this gives us a far better UX:
+
+Load WebPage => Render UI => API Call => Render Updated UI
+
+### UseEffect Hook, Purpose Method Pros & Cons
+
+The useEffect hook in React is a powerful tool that allows you to synchronize a component with an external system. It’s like having a backstage pass to React’s lifecycle events.
+
+Purpose
+
+- Synchronization: Use useEffect to connect your component to external systems, handle side effects, and perform cleanup tasks.
+- Lifecycle Events: It can replicate the behavior of componentDidMount, componentDidUpdate, and componentWillUnmount methods.
+
+Method
+
+- Call useEffect at the top level of your component to declare an effect.
+- Provide a setup function (your effect’s logic) as the first argument.
+- Optionally, specify an array of dependencies (reactive values) as the second argument. These dependencies determine when the effect runs.
+- The cleanup function (if provided) runs before the effect’s setup function on every re-render with changed dependencies.
+
+Pros
+
+- Fetching Data: Use effects to fetch data from APIs or databases.
+- Updating State: Update component state based on previous state within an effect.
+- Custom Hooks: Wrap effects in custom hooks for reusability.
+- Non-React Widgets: Integrate with non-React libraries or widgets.
+- Reactive Dependencies: Specify dependencies to control when the effect runs.
+
+Cons
+
+- Top-Level Only: You can only call useEffect at the top level of your component or your own custom hooks.
+- No Loops or Conditions: Avoid using it inside loops or conditions.
+- Strict Mode Behavior: In strict mode, React runs an extra development-only setup+cleanup cycle before the first real setup.
+
+### Shimmer UI and whats it's use?
+
+Shimmer is a temporary animation placeholder for when a service call takes time to return data and we don't want to block rendering the rest of the UI. If a smooth transition from Shimmer to content is desired, wrap the content node with a Shimmer element and use the isDataLoaded prop to trigger the transition.
+
+It is a better way to show loading states than traditional loading indicators such as buffering and loading spinners because it provides visual feedback, reduces cognitive load, eliminates surprises, and enhances aesthetic appeal.
+
+Shimmer UI can be implemented using different platforms and frameworks such as Flutter, Microsoft Fluent UI for Shiny, or HTML and CSS.
+
+Shimmer effect can be implemented using conditional rendering in React.
+
+### What's Conditional rendering?
+
+Conditional rendering is a technique in React that allows you to display different content based on certain conditions or states. It enables you to create dynamic user interfaces that can adapt to changes in data and user interactions.
+
+In React, you can conditionally render JSX using JavaScript syntax like if statements, &&, and ? : operators. You can return different JSX depending on a condition, conditionally include or exclude a piece of JSX, and use common conditional syntax shortcuts you’ll encounter in React codebases.
+
+### What does it mean when we render a component?
+
+Rendering a component in React means creating a virtual representation of the component in the browser’s memory and displaying it on the screen. When a component is rendered, React creates a virtual DOM (Document Object Model) tree that represents the component’s structure and content. This virtual DOM tree is then used to update the actual DOM tree (using a diffing algorithm), which is what the user sees on the screen.
+
+When a component’s state or props change, React will automatically re-render the component and update the virtual DOM tree. React then compares the new virtual DOM tree with the previous one and only updates the parts of the actual DOM that have changed, resulting in a faster and more efficient update process.
+
+### What makes react fast? TLDR: The reconciliation algirithm
+
+React’s reconciliation algorithm is responsible for updating the DOM in response to changes in the component state. When a component’s state changes, React will re-render the component and its children. The reconciliation algorithm determines what has changed in the component tree and updates the DOM accordingly.
+
+React uses a Virtual DOM (VDOM) to perform reconciliation. The VDOM is a lightweight in-memory representation of the actual DOM. When the state of a component changes, React compares the VDOM of the last and current states and calculates the minimum number of DOM operations required to update the actual DOM to match the current VDOM. This helps reduce the number of DOM manipulations and improve the application’s performance.
+
+React’s reconciliation algorithm was improved with the introduction of Fiber in React 16.0. Fiber is a new reconciliation algorithm that aims to improve the performance of React applications by making the reconciliation process more efficient. It does this by allowing the reconciliation process to be broken down into smaller chunks and scheduled over multiple frames rather than being completed in a single frame. Fiber divides the reconciliation work into smaller units called “fibers”. Each fiber represents a single element in the VDOM tree, and the reconciliation process is performed on each fiber individually. This allows React to prioritize the reconciliation of certain fibers over others, depending on the importance of the updates.
+
+### Optional chaining
+
+Optional chaining is a feature in JavaScript that allows you to access properties of an object without having to check if the object exists first. It is represented by the ?. operator, which can be used to access a property or call a method on an object only if the object is not null or undefined

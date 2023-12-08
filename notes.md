@@ -321,3 +321,61 @@ React’s reconciliation algorithm was improved with the introduction of Fiber i
 ### Optional chaining
 
 Optional chaining is a feature in JavaScript that allows you to access properties of an object without having to check if the object exists first. It is represented by the ?. operator, which can be used to access a property or call a method on an object only if the object is not null or undefined
+
+## Routing Pages and Deeper dives to Hooks
+
+- rafce => is a vs code shorthand to create a react component blueprint (boiler code).
+
+### useEffect and it's dependency array
+
+- useEffect hook without a dependency array is called everytime the component renders.
+- if theres an empty dependency array, useEffect is called once when the component initially renders.
+- if there are elements in the dependency array, it is called when the dependency array changes.
+
+### useState hook and what not to do
+
+- never create state variables outside your component, hooks can only be called in the body of a component.
+- it's used to create local state variables inside your components. (try to call the mon the top).
+- using if, else loop or function statements to create hooks will lead to inconsistencies.
+
+### Routing in your app
+
+react-router-dom is a package that provides declarative routing for React web applications. It is an npm package that enables you to implement dynamic routing in a web app. It allows you to display pages and allow users to navigate them.
+
+It facilitates component-based routing according to the needs of the app and platform. Steps for using react router dom to add routing to the project:
+
+- create routing configuration for your project using createBrowserRouter
+- provide this routing configuration as a prop to your app using routerProvider
+- router provider now acts as the main component to render taking routing config as a prop.
+
+Types of routing in web apps, Client-side routing and server-side routing are two different approaches to handling routing in web applications
+
+- _Server-side routing_ is the traditional approach to routing, where the server handles all the routing logic. When a user clicks on a link, the server sends a new document (usually HTML) as a response. The browser discards the old webpage altogether and displays the newly downloaded one. Server-side routing is fast on page load, and you will get the exact data you requested.
+- _Client-side routing_ is a newer approach to routing, where the routing logic is handled by the client-side code (usually JavaScript). When a user clicks on a link, the client-side code catches this event, detects that the URL is not an external link, and then prevents the browser from making the HTTP GET request. Instead, the client-side code downloads, processes, and displays new data for you. Client-side routing is preferred for fast routing between components, since less data is loaded on each change.
+
+Single Page Applications uses Client side routing.
+
+### Why not use anchor tags in react? What's the Link component in react-router-dom
+
+Anchor tags can be used in React, but it is not recommended to use them for navigation within a web application. This is because anchor tags cause the entire page to reload, which results in the loss of the app’s current state and causes a delay for the user.
+
+Instead, React provides the Link component from react-router-dom package, which is a declarative way of handling navigation in a web application. The Link component is converted to an anchor tag internally, but it does not cause the entire page to reload. This helps to retain the app’s current state and provides a seamless user experience.
+
+If you want to link to a webpage outside of your React app, you can use a regular anchor tag with an href attribute. However, if you want to link to a page within your React app, it is recommended to use Link component from react-router-dom package
+
+### Single page apps
+
+A Single Page Application (SPA) is a web application that works within a web browser and loads just a single document. It does not need page reloading during its usage, and most of its content remains the same while only some of it needs updating.
+
+React is often used to build SPAs because it allows developers to create reusable UI components that can be rendered dynamically without requiring a full page refresh.
+
+### Various ways of adding images to a react component
+
+- Using the import keyword
+  - You can import an image file right in a JavaScript module e.g. import logo from './logo.png';
+- Using the require keyword
+  - use require function to import an image file: require('./logo.png')
+- Importing SVGs directly as a React component
+  - mport SVG files directly as React components, import { ReactComponent as Logo } from './logo.svg'; then use <Logo />
+- Loading images directly from the network
+  - using the src tag src="https://www.example.com/images/logo.png"

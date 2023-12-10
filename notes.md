@@ -522,3 +522,61 @@ Lazy loading in React is a technique that allows you to defer loading of certain
 - When you use React.lazy, the bundle containing OtherComponent will be loaded on demand when the component is first rendered.
 - To display a loading indicator while the component is loading, wrap the lazy component (or any of its parents) in a <Suspense> boundary.
 - The <Suspense> component allows you to handle asynchronous rendering and show fallback content until the lazy component is ready.
+
+## Style your app like a pro
+
+There are different ways to style your app, here are some of them
+
+### SASS and SCSS
+
+Sass and SCSS are both CSS pre-processors, which means they enhance the way we write and organize our CSS styles.
+Sass (Syntactically Awesome Style Sheets):
+
+Sass is a language extension for CSS.
+
+- It introduces advanced syntax features that make CSS more powerful.
+- Key features include variables, math support, and nesting.
+- Sass files use the indented syntax (file extension .sass), which relies on indentation instead of curly braces and semicolons.
+- It was the original syntax for Sass.
+- While it supports all the same features as SCSS, it’s less popular due to its unique syntax.
+
+SCSS (Sassy CSS):
+
+- SCSS stands for Sassy CSS and is the main syntax for Sass.
+- It uses the file extension .scss.
+- SCSS is a superset of CSS, meaning that essentially all valid CSS is also valid SCSS.
+- It’s more popular because of its similarity to regular CSS.
+- You can copy and paste CSS from Stack Overflow and browser development tools directly into SCSS files.
+- SCSS files are processed by the Sass pre-compiler, which ultimately generates regular CSS.
+
+### Styled components in React
+
+Styled-components is a powerful library for React and React Native that allows you to write and manage your CSS directly within your JavaScript files. It’s a “CSS-in-JS” solution, which means you define your styles using JavaScript syntax.
+
+- You can create styled components by importing the styled function from styled-components.
+- These components are React components that encapsulate both the markup and the styling.
+- The styling is defined using tagged template literals (those funky backticks) within the component definition.
+- Benefits of styled-components:
+  - Speed: It simplifies styling and reduces the need for separate CSS files.
+  - Strong Typing: You get type safety with TypeScript.
+  - Flexibility: You can easily create reusable and dynamic components.
+  - Server-Side Rendering Compatibility: Works well with server-side rendering.
+  - Smaller Bundles: No additional build step needed.
+
+### Design Frameworks
+
+Design frameworks are collections of reusable components and styles that help developers create consistent and attractive user interfaces. Some popular design frameworks for React are:
+
+- Material UI: A framework based on Google’s Material Design system, which provides a set of components that follow the principles of simplicity, usability, and accessibility.
+- Bootstrap: A framework that uses HTML, CSS, and JavaScript to create responsive and mobile-first websites. It offers a wide range of components, utilities, and themes that can be customized easily.
+- Chakra UI: A framework that focuses on accessibility, modularity, and performance. It provides a set of components that are built with React Hooks and styled-system, which allow developers to customize them with props or theme variables.
+
+### TailwindCSS
+
+Tailwind CSS is a utility-first CSS framework that lets you create custom designs by applying utility classes directly to HTML elements.
+
+Unlike other frameworks that provide predefined components, Tailwind CSS gives you more flexibility and control over your styles.
+
+You can install Tailwind CSS with the Tailwind CLI tool or PostCSS. You can also customize Tailwind CSS with your own theme, colors, fonts, breakpoints, and more
+
+Tailwind CSS uses PostCSS to transform css with Javascript. PostCSS allows our project to use parcel to recognize tailwindcss.

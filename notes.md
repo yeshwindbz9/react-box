@@ -379,3 +379,76 @@ React is often used to build SPAs because it allows developers to create reusabl
   - mport SVG files directly as React components, import { ReactComponent as Logo } from './logo.svg'; then use <Logo />
 - Loading images directly from the network
   - using the src tag src="https://www.example.com/images/logo.png"
+
+## Getting classy with Class based components
+
+In React, class components were the primary way to manage state and lifecycle before the introduction of Hooks. Although function components are now preferred due to their simplicity and equivalence to class components, let’s explore how class components work.
+
+Creating a Class Component:
+
+- Class components are defined using JavaScript classes that extend React.Component.
+- The component name must start with an uppercase letter.
+- A class component includes a render() method that returns HTML elements.
+
+Component Constructor:
+
+- If your class component has a constructor function, it gets called when the component is initialized.
+- In the constructor, you can set initial properties (and/or state) for your component.
+- The super() statement ensures inheritance from the parent component (React.Component).
+
+Lifecycle Methods:
+
+- Class components have several lifecycle methods that allow you to perform actions at specific points in the component’s life.
+- Common lifecycle methods include:
+
+  - componentDidMount(): Called after the component is inserted into the DOM.
+  - componentDidUpdate(prevProps, prevState): Called after a component’s state or props change.
+  - componentWillUnmount(): Called before the component is removed from the DOM.
+    Props:
+
+- Props (short for properties) allow passing data from parent components to child components.
+- Class components can access props via this.props
+
+State Management:
+
+- Class components can hold and manage their own state using this.state.
+- State changes trigger re-rendering of the component.
+
+Remember that while class components are still valid, function components with Hooks are now the recommended approach due to their simplicity and improved performance.
+
+### What really happens inside a class based component
+
+When a class based component is encountered/instantiated
+
+- the constructor of the class is called
+- then the render method is called
+- then the componentDidMount is called (similar to useEffect with empty dependency array)
+  - componentDidMount is used to make api calls (first render UI then make API call)
+  - if the parent component is a class based component, parent componentDidMount is called only after the child componentDidMount is called.
+  - when there are multiple child classes react optimises the performance by batching the render cycles of the child class components
+
+Highly recommended to Refer: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+React component lifecycle has two phases
+
+- render phase (pure and has no sidee effects, may be paused, aborted or restarted by react)
+  - initialises class constructor, then proceeds to render the comoponent
+- commit phase (can work with DOM, run side effects and schedules updates)
+  - react updates DOM and refs - calls componentDidMount and componentDidUpdate
+
+Note the following
+
+- incase of changes to state variable or update to props is made
+  - we go back to render phase and component rerenders
+  - then updates the DOM and refs in the commit phase
+    - and finally calls the componentDidUpdate
+
+Another sub note here:
+
+- for functional component, when using the useEffect hook,
+- the return function of the use Effect hook is called when the component unmounts.
+- We can't have the useEffect function as an async function.
+  - React expects the effect function to either return nothing or a cleanup function.
+  - If you return a promise, React won’t be able to handle it properly, and you might encounter unexpected behavior.
+  - To use an async function, create it directly inside the useEffect callback.
+  - This way, you can await the result of your async operation and then update the component state accordingly.

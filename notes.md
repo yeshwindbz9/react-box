@@ -452,3 +452,73 @@ Another sub note here:
   - If you return a promise, React won’t be able to handle it properly, and you might encounter unexpected behavior.
   - To use an async function, create it directly inside the useEffect callback.
   - This way, you can await the result of your async operation and then update the component state accordingly.
+
+## Optimising your code using lazy loading and using custom hooks
+
+### Single Responsibility Principle
+
+The Single Responsibility Principle (SRP) is a fundamental concept in software engineering. It states that every module, class, or function in a computer program should have responsibility over a single part of that program’s functionality, and it should encapsulate that part.
+
+In simpler terms:
+
+- Each class or module should focus on one specific responsibility.
+- A class should have only one reason to change.
+- By adhering to SRP, we can ensure that our code is modular, testable, and easier to maintain over time.
+
+### Custom Hooks
+
+Custom Hooks in React are a powerful way to reuse stateful logic between components. Imagine being able to write a function with just your component logic code (without the UI or JSX) and then reuse that logic in several components. That’s precisely what a custom hook enables you to do.
+
+Why Custom Hooks?
+
+- Custom Hooks allow you to abstract and isolate states and side effects, giving you more control and flexibility over certain components.
+- They enable you to isolate a component’s behavior and encapsulate it in a reusable function.
+- Imagine you’re developing an app that relies heavily on network connectivity.
+- You want to warn the user if their network connection goes offline while using your app.
+- You can create a custom hook called useOnlineStatus
+
+Creating CustomHooks
+
+- A custom hook is a function that starts with the word “use” (e.g., useFetchData, useLocalStorage, etc.).
+- These hooks can call other built-in hooks like useState, useEffect, or even other custom hooks.
+- The naming convention of “useWhatever” helps linters find bugs related to hook usage and ensures adherence to the rules of Hooks.
+
+### Code Splitting, Chunking, Dynamic Bundling
+
+Code Splitting
+
+- Code splitting is a technique used to improve performance in web applications.
+- Instead of sending all the JavaScript that makes up the application as soon as the first page loads, code splitting allows you to split your code into smaller chunks.
+- These smaller chunks are loaded on demand, which enhances the user experience by reducing initial load times.
+
+Chunking
+
+- App chunking is closely related to code splitting.
+- It involves dividing your application’s codebase into chunks based on different parts or features.
+- These chunks are then loaded separately as needed.
+- By chunking your app, you can achieve several benefits:
+  - Parallel loading: Different chunks can be fetched simultaneously, improving overall load times.
+  - Caching efficiency: Smaller chunks are easier to cache, leading to better performance.
+  - Reduced initial payload: Users don’t need to download the entire app upfront; they only load what’s necessary for their current interaction.
+- Tools like Webpack, Create React App, and frameworks like Next.js make it easy to implement code splitting and app chunking.
+
+Take an Example:
+
+- Suppose you have a React application with various components and routes.
+- When a user visits your app, you can dynamically load specific chunks based on their actions.
+- For instance, if the user clicks a button to view their profile, the associated profile-related code (components, styles, and logic) is loaded at that moment.
+- This approach optimizes performance by fetching only what’s needed, especially in scenarios where users might not explore every part of your app during a single session.
+- In summary, both code splitting and app chunking contribute to a more efficient and responsive web experience, ensuring that users get the necessary functionality without unnecessary overhead
+
+Dynamic bundling, code splitting and Chunking at the end of the day means the same thing.
+
+Dynamic bundling and route-centric code splitting enhance the user experience by optimizing load times. So, next time you’re building a React app
+
+### What's the deal with lazy loading? Pssh... it helps reduce the bundling size
+
+Lazy loading in React is a technique that allows you to defer loading of certain components or resources until they are actually needed. It’s particularly useful for optimizing performance and reducing initial load times.
+
+- The React.lazy function lets you render a dynamic import as a regular component.
+- When you use React.lazy, the bundle containing OtherComponent will be loaded on demand when the component is first rendered.
+- To display a loading indicator while the component is loading, wrap the lazy component (or any of its parents) in a <Suspense> boundary.
+- The <Suspense> component allows you to handle asynchronous rendering and show fallback content until the lazy component is ready.

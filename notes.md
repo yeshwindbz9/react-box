@@ -580,3 +580,46 @@ Unlike other frameworks that provide predefined components, Tailwind CSS gives y
 You can install Tailwind CSS with the Tailwind CLI tool or PostCSS. You can also customize Tailwind CSS with your own theme, colors, fonts, breakpoints, and more
 
 Tailwind CSS uses PostCSS to transform css with Javascript. PostCSS allows our project to use parcel to recognize tailwindcss.
+
+## Managing data in React
+
+### Higher order functions
+
+Higher-order functions are functions that either take a function as an argument or return a function. In React, higher-order components (HOCs) are a type of higher-order function that take a component as an argument and return a new component. HOCs are useful for reusing component logic and are a pattern that emerges from React’s compositional nature.
+
+For example, the map function is a higher-order function that takes a callback function as an argument and applies it to each item in an array, returning a new array. Similarly, a higher-order components in react can take a component and return a new component with additional functionality.
+
+- they are pure js functions
+- it does not change the parent component, but just appends or enhances it.
+
+### Data layer in react
+
+The data layer in React is a way to manage the state of an application. It is a centralized store that holds the data of the application and provides a way to access and update it. There are several libraries that can be used to implement a data layer in React, such as Redux, MobX, and React Context API.
+
+React Context API is a built-in feature of React that can be used to implement a data layer. It provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+### What's an accordian in GUI's?
+
+An accordion in a graphical user interface (GUI) is a control element that consists of a vertically stacked list of items, such as labels or thumbnails. Each item can be expanded or collapsed to reveal the content associated with that item.
+
+The accordion widget can be used to display a large amount of information in a small space, making it a popular choice for responsive design. There are several libraries available that can be used to implement an accordion in a React application, such as React Bootstrap, Material-UI, and Ant Design. These libraries provide pre-built components that can be used to create an accordion with minimal coding
+
+### Controlled and Uncontrolled components
+
+In React, there are two ways to handle form data in our components: controlled and uncontrolled components. A controlled component is a component that is controlled by React state. In this approach, the form data is handled by the component’s state. The component receives its current value and an update callback via props, and the parent component manages the state of the component.
+
+On the other hand, an uncontrolled component is a component that maintains its own internal state. In this approach, the form data is handled by the DOM itself. Instead of writing an event handler for every state update, you can use a ref to get form values from the DOM
+
+### Props drilling
+
+Prop drilling is an unofficial term used in React to describe the process of passing data from a parent component to its child components through multiple levels of nesting. This is done by passing the data as props to each intermediate component in the hierarchy until it reaches the final destination component that needs the data. Prop drilling can be problematic because it can lead to code redundancy, decreased performance, and reduced component reusability.
+
+### useContext, a solution to props drilling
+
+In React, context is a way to pass data down through a component tree without having to pass props down through every level. This can be very helpful since this allows us to share data between components that are not directly related to each other (e.g., between sibling components)
+
+useContext is a React Hook that lets you read and subscribe to context from your component. It returns the context value for the calling component. It is determined as the value passed to the closest SomeContext.Provider above the calling component in the tree. If there is no such provider, then the returned value will be the defaultValue you have passed to createContext for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes
+
+A context provider is a component that provides data to its child components. It is created using the createContext function and is used to create a new context object. The Provider component is used to provide the data to the child components. The value prop is used to pass the data to the child components
+
+A context consumer is a React component that subscribes to context changes. It allows you to subscribe to a context within a function component. The Consumer component is used to request data through the provider and manipulate the central data store when the provider allows it

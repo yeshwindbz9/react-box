@@ -623,3 +623,68 @@ useContext is a React Hook that lets you read and subscribe to context from your
 A context provider is a component that provides data to its child components. It is created using the createContext function and is used to create a new context object. The Provider component is used to provide the data to the child components. The value prop is used to pass the data to the child components
 
 A context consumer is a React component that subscribes to context changes. It allows you to subscribe to a context within a function component. The Consumer component is used to request data through the provider and manipulate the central data store when the provider allows it
+
+## React with Redux
+
+_Redux is not mandatory for all projects, but it will provide an edge for huge projects with a lot of data_
+
+React Redux is the official React binding for Redux, a state management library for JavaScript applications. It allows React components to read data from a Redux store and dispatch actions to the store to update data
+
+The official React bindings for Redux are designed to work with React’s component model, enabling you to define how to extract the values your component needs from Redux, and your component updates automatically as needed . . React Redux provides APIs that enable your components to interact with the Redux store, so you don’t have to write that logic yourself. It is optimized to automatically implement complex performance optimizations, so that your own component only re-renders when the data it needs has actually changed
+
+- it is a seperate library used with react, it's not a part of react
+- use only when it is required
+- zustand is another library used for state management
+- redux offers easy debugging
+
+## React toolkit aka RTK
+
+Redux Toolkit is an official package that simplifies the process of writing Redux code by providing a set of tools and guidelines to follow. It is designed to reduce the amount of boilerplate code needed to write Redux applications, making it easier to write, read, and maintain code.
+
+The main differences between Redux Toolkit and vanilla Redux are:
+
+- Less boilerplate code: Redux Toolkit provides a set of utilities that help you write Redux code with less boilerplate code.
+- Simpler syntax: Redux Toolkit provides a simpler syntax for defining Redux slices, which are a combination of reducers, actions, and selectors.
+- Immutability by default: Redux Toolkit uses the Immer library to allow you to write reducers that can modify state directly, without worrying about immutability.
+- Built-in middleware: Redux Toolkit comes with built-in middleware, including thunk middleware for handling asynchronous actions.
+- Better performance: Redux Toolkit is optimized for performance, which means that it can help you write applications that are faster and more efficient than those written with vanilla Redux.
+
+### Redux store
+
+_always subscribe to a portion of a store, never subscribe to the whole store, it's inefficient_
+
+In Redux, a store is an object that holds the entire state tree of your application. The only way to change the state inside it is to dispatch an action on it, which triggers the root reducer function to calculate the new state. A store is not a class, but just an object with a few methods on it.
+
+To create a store, you need to pass your root reducer function to Redux Toolkit’s configureStore method, which will set up a Redux store with a good default configuration. If you’re not yet using Redux Toolkit, you can use the original createStore method, but it is recommended to migrate your code to use Redux Toolkit as soon as possible.
+
+The following are the methods available on a store object:
+
+- getState(): Returns the current state tree of your application. It is equal to the last value returned by the store’s reducer.
+- dispatch(action): Dispatches an action. This is the only way to trigger a state change. The store’s reducer function will be called with the current getState() result and the given action synchronously. Its return value will be considered the next state. It will be returned from getState() from now on, and the change listeners will immediately be notified.
+- subscribe(listener): Adds a change listener. It will be called any time an action is dispatched, and some part of the state tree may potentially have changed.
+- replaceReducer(nextReducer): Replaces the reducer currently used by the store to calculate the state.
+
+How does redux work?
+
+- on click of a button or on some user interaction we dispatch an action
+- dispatch action triggers a state change, this helps us access the slice of a store
+- the function that dispatches an action is called as a reducer, this updates a slice of the store
+- we can subscribe to a slice of a store using a selector(listner)
+- finally with the updated data we update the component
+
+Redux works as a “centralized store” and is the only place to access the state, also known as “The single source of truth”. In a Redux application, the state is updated by dispatching an action, which is a plain JavaScript object that describes the change to be made to the state. The action is then passed to a reducer, which is a pure function that takes the current state and the action as arguments and returns the new state. The reducer is responsible for updating the state in response to the action.
+
+The state in Redux is immutable, meaning that it cannot be changed directly. Instead, a new state object is created every time the state is updated. This makes it easy to track changes to the state and to implement features like undo and redo.
+
+In summary, Redux works by providing a centralized store for application state, which can only be updated in a predictable fashion. The state is updated by dispatching actions, which are handled by reducers, and the state is always kept immutable
+
+Steps to add redux to your project
+
+- install reduxjs/toolkit and react-redux
+- build data store
+- connect store to app
+- create a slice in store
+- dispatch(action)
+- create selector
+
+_Redux uses Immer behind the scenes_

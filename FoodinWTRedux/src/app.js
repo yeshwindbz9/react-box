@@ -8,6 +8,10 @@ import Contact from "./components/Contact";
 import Error404 from "./components/Error404";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
+
 // import ResDetails from "./components/ResDetails";
 const ResDetails = lazy(() => import("./components/ResDetails"));
 // using lazy loading instead
@@ -23,15 +27,17 @@ const AppComponent = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: user, setUser }}>
-      <div className="flex flex-col h-screen gap-1 font-tsukimi-rounded shadow-lg">
-        {/* push children according to routes */}
-        <Header />
-        {/* Outlet is filled with children according to the path */}
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: user, setUser }}>
+        <div className="flex flex-col h-screen gap-1 font-tsukimi-rounded shadow-lg">
+          {/* push children according to routes */}
+          <Header />
+          {/* Outlet is filled with children according to the path */}
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -52,6 +58,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurants/:resId",

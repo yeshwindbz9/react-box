@@ -1,6 +1,19 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
-const ResCategoryList = ({ items }) => {
+const ResCategoryList = ({ items, showAdd }) => {
+  const dispatch = useDispatch();
+
+  // dispatch an action on add button
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+    // it adds this as an action object
+    // {
+    //   payload: itemName
+    // }
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -24,9 +37,18 @@ const ResCategoryList = ({ items }) => {
           <div>
             <span>{item?.card?.info?.description}</span>
           </div>
-          <button className=" p-2 rounded-md bg-gray-300 text-green-600">
-            Add +
-          </button>
+          {showAdd ? (
+            <button
+              className=" p-2 rounded-md bg-gray-300 text-green-600"
+              onClick={() => {
+                handleAddItem(item);
+              }}
+            >
+              Add +
+            </button>
+          ) : (
+            <p></p>
+          )}
         </div>
       ))}
     </div>

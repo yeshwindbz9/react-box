@@ -17,14 +17,19 @@ let resCount = 10;
 const Body = () => {
   // normal variable (updates but does not rerender UI)
   // let resList = resData;
+
   // state variable (updates and rerenders UI)
   const [resList, setList] = useState([]);
+
   // filtered state variable to not allow repeated filters
-  const [filteredList, setFiltered] = useState(resList);
+  const [filteredList, setFiltered] = useState([]);
+
   // state variable for search box
   const [searchText, setSearchText] = useState("");
+
   // using use effect to fetch data from an api
   // it's called (everytime) after the component renders
+
   useEffect(() => {
     fetchData();
   }, []); // dependency array changes the behaviour of the useEffect, refer notes
@@ -39,8 +44,9 @@ const Body = () => {
     const json = await data.json();
     // optional chaining
     let list =
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
+
     setList(list);
     setFiltered(list);
   };
@@ -50,7 +56,6 @@ const Body = () => {
     data.widgetOffset.collectionV5RestaurantListWidget_SimRestoRelevance_food_seo =
       String(resCount);
     resCount += 20;
-    console.log(resCount);
     const response = await fetch(SWIGGY_POST_URL, {
       method: "POST",
       mode: "cors", // no-cors, *cors, same-origin
@@ -69,6 +74,7 @@ const Body = () => {
       json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     list = resList.concat(list);
+
     setList(list);
     setFiltered(list);
   };

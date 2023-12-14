@@ -24,7 +24,11 @@ const ResCategory = (props) => {
           <span>🔻</span>
         </div>
         {/* Accordian body */}
-        <div>{showItem && <ResCategoryList items={data.itemCards} />}</div>
+        <div>
+          {showItem && (
+            <ResCategoryList items={data.itemCards} showAdd={true} />
+          )}
+        </div>
       </div>
     </div>
   );

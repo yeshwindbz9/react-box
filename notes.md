@@ -637,7 +637,7 @@ The official React bindings for Redux are designed to work with React’s compon
 - zustand is another library used for state management
 - redux offers easy debugging
 
-## React toolkit aka RTK
+### React toolkit aka RTK
 
 Redux Toolkit is an official package that simplifies the process of writing Redux code by providing a set of tools and guidelines to follow. It is designed to reduce the amount of boilerplate code needed to write Redux applications, making it easier to write, read, and maintain code.
 
@@ -688,3 +688,53 @@ Steps to add redux to your project
 - create selector
 
 _Redux uses Immer behind the scenes_
+
+## Testing our app
+
+_even a small change, like a single line of code can introduce bugs in your app, testing is essential, no matter what_
+
+Manual testing is a software testing process in which test cases are executed without using any automated tools. It ensures that the web application is functioning as intended and that all features are working properly.
+
+In contrast, automated testing is a type of testing that uses software tools to run tests automatically, which can save time and reduce the risk of human error.
+
+Continuous testing is another type of testing that involves testing throughout the software development lifecycle. It helps to identify issues early on and ensures that the software is always ready for deployment.
+
+Types of testing (as a developer, it's important to know unit and integration testing)
+
+- Unit testing: This type of testing is used to test individual units or components of a web application in isolation. It helps to ensure that each unit of the application is working as intended and that there are no bugs or errors in the code. Unit testing is usually performed by developers and is an essential part of the software development process.
+
+- Integration testing: This type of testing is used to test how different units or components of a web application work together. It helps to ensure that the application is functioning as a whole and that there are no issues with the integration of different components. Integration testing is usually performed after unit testing and before system testing.
+
+- End-to-end testing: This type of testing is used to test the entire web application from start to finish. It helps to ensure that the application is working as intended and that all features are working properly. End-to-end testing is usually performed after integration testing and before the application is deployed to production.
+
+### React testing library
+
+React Testing Library is a lightweight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices
+
+- it builds on top of the DOM testing Library(base of all other web technology based testing libraries)
+- but when using create-react-app testing library comes built in
+  - if configuring yourself npm i -D @testing-library/react jest babel-jest @babel/core @babel/preset-env
+  - configure the babel config file for jest, overrides babel config to avoid dependency conflicts with parcel
+  - configure parcel config file to disable default babel transpilation
+- React testing library uses jest (delightful js testing framework)
+  - Jest uses babel and some additional dependencies
+- next, npx jest --init, this creates jest.config.js
+- then install jest-environment-jsdom
+- install @babel/preset-react library and include it inside the babel config
+- install @testing-library/jest-dom
+
+### Testcase for a react component
+
+To write a test case for a React component, you can use the React Testing Library.
+
+Steps to write a test case:
+
+- Import the required methods.
+- Render the component you want to test using the render method.
+- Use the screen object to make a query for an element.
+- Use the expect method to assert that the element is present and has the expected value.
+- you can use describe to group some test cases, also `it` is an alias for `test` functions
+- describe function can encapsulate multiple test cases
+- use the getBy function to select the react element by querying the element by role, testid, placeholder, text etc...
+- use expect(something).toBe and .toBeInTheDocument to check if the element is equal to or in the document respectively
+- while testing if you are using a redux store in your app, you must use a provider to provide a store object

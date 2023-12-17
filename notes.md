@@ -737,4 +737,4 @@ Steps to write a test case:
 - describe function can encapsulate multiple test cases
 - use the getBy function to select the react element by querying the element by role, testid, placeholder, text etc...
 - use expect(something).toBe and .toBeInTheDocument to check if the element is equal to or in the document respectively
-- while testing if you are using a redux store in your app, you must use a provider to provide a store object
+- rememebr, while testing if you are using a redux store in your app, you must use a provider to provide a store object
